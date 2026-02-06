@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
               className="flex items-center justify-center space-x-3 glass border-white/10 hover:border-blue-500/30 text-white font-bold px-8 py-4 rounded-2xl transition-all"
             >
               <FileEdit size={18} className="text-blue-400" />
-              <span>수강 신청하기</span>
+              <span>강의 신청하기</span>
             </M.a>
 
             {/* KakaoTalk 1:1 Inquiry */}
