@@ -6,11 +6,12 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
 import Strengths from './components/Strengths';
-import VideoSection from './components/VideoSection';
 import Footer from './components/Footer';
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
+  // Fix: Use type-casted motion to bypass systemic type mismatches in the environment
+  const M = motion as any;
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2000);
@@ -28,33 +29,33 @@ const App: React.FC = () => {
 
       <AnimatePresence>
         {loading ? (
-          <motion.div
+          <M.div
             key="loader"
             className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950"
             exit={{ opacity: 0, scale: 1.1 }}
             transition={{ duration: 0.8 }}
           >
             <div className="text-center">
-              <motion.h1 
+              <M.h1 
                 className="text-4xl font-futuristic font-bold tracking-tighter text-blue-500 neon-text mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
               >
-                KIM ERIN AI
-              </motion.h1>
+                Instructor 김애린
+              </M.h1>
               <div className="w-64 h-1 bg-slate-800 rounded-full overflow-hidden relative">
-                <motion.div 
+                <M.div 
                   className="absolute inset-0 bg-blue-500"
                   initial={{ x: '-100%' }}
                   animate={{ x: '0%' }}
                   transition={{ duration: 1.5, ease: "easeInOut" }}
                 />
               </div>
-              <p className="mt-4 text-slate-500 text-sm tracking-widest uppercase">Initializing Interface...</p>
+              <p className="mt-4 text-slate-500 text-sm tracking-widest uppercase">Initializing Neural Interface...</p>
             </div>
-          </motion.div>
+          </M.div>
         ) : (
-          <motion.main
+          <M.main
             key="main"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -65,9 +66,8 @@ const App: React.FC = () => {
             <About />
             <Strengths />
             <Services />
-            <VideoSection />
             <Footer />
-          </motion.main>
+          </M.main>
         )}
       </AnimatePresence>
     </div>

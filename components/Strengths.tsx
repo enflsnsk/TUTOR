@@ -31,22 +31,25 @@ const strengthData = [
 ];
 
 const Strengths: React.FC = () => {
+  // Fix: Use type-casted motion to bypass systemic type mismatches in the environment
+  const M = motion as any;
+
   return (
     <section id="strengths" className="py-24 px-6 bg-slate-900/30">
       <div className="max-w-7xl mx-auto">
-        <motion.div 
+        <M.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
           <h2 className="text-blue-400 font-futuristic font-bold mb-4 tracking-widest uppercase">Core Strengths</h2>
-          <h3 className="text-4xl font-bold text-white">압도적인 전문성의 4가지 기둥</h3>
-        </motion.div>
+          <h3 className="text-4xl font-bold text-white break-keep">압도적인 전문성의 4가지 포인트</h3>
+        </M.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {strengthData.map((item, idx) => (
-            <motion.div
+            <M.div
               key={idx}
               className={`relative glass p-8 rounded-3xl overflow-hidden group hover:border-white/20 transition-all`}
               initial={{ opacity: 0, y: 30 }}
@@ -60,10 +63,10 @@ const Strengths: React.FC = () => {
                 <div className="w-12 h-12 glass rounded-xl flex items-center justify-center mb-6">
                   {item.icon}
                 </div>
-                <h4 className="text-xl font-bold text-white mb-4">{item.title}</h4>
-                <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                <h4 className="text-xl font-bold text-white mb-4 break-keep">{item.title}</h4>
+                <p className="text-slate-400 text-sm leading-relaxed break-keep">{item.desc}</p>
               </div>
-            </motion.div>
+            </M.div>
           ))}
         </div>
       </div>

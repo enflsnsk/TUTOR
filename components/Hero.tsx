@@ -3,6 +3,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const Hero: React.FC = () => {
+  // Fix: Use type-casted motion to bypass systemic type mismatches in the environment
+  const M = motion as any;
+
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
       {/* 3D Grid Background */}
@@ -14,7 +17,7 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="relative z-10 text-center max-w-4xl mx-auto">
-        <motion.div
+        <M.div
           initial={{ opacity: 0, scale: 0.9, y: 50 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -28,39 +31,39 @@ const Hero: React.FC = () => {
               EDUCATION
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-400 font-light max-w-2xl mx-auto leading-relaxed mb-10">
+          <p className="text-lg md:text-xl text-slate-400 font-light max-w-2xl mx-auto leading-relaxed mb-10 break-keep">
             복잡한 인공지능 기술을 일상과 업무의 언어로 변환합니다.<br/> 
-            김애린과 함께하는 디지털 트랜스포메이션의 새로운 여정.
+            김애린 강사와 함께하는 디지털 트랜스포메이션의 새로운 여정.
           </p>
           
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <motion.button 
+            <M.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-white text-slate-950 font-bold px-10 py-4 rounded-xl shadow-xl shadow-blue-500/20"
-              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => { document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }); }}
             >
               시작하기
-            </motion.button>
-            <motion.button 
+            </M.button>
+            <M.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="glass border-slate-700 text-white font-bold px-10 py-4 rounded-xl"
-              onClick={() => window.open('https://blog.naver.com/aeringo', '_blank')}
+              className="glass border-slate-700 text-white font-bold px-10 py-4 rounded-xl transition-colors hover:bg-white/5"
+              onClick={() => { window.open('https://blog.naver.com/aeringo', '_blank'); }}
             >
               블로그 방문
-            </motion.button>
+            </M.button>
           </div>
-        </motion.div>
+        </M.div>
       </div>
 
       {/* Floating Elements */}
-      <motion.div 
+      <M.div 
         className="absolute bottom-20 left-10 w-24 h-24 glass border-blue-500/50 rounded-2xl hidden lg:block"
         animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 5 }}
       />
-      <motion.div 
+      <M.div 
         className="absolute top-40 right-10 w-32 h-32 glass border-purple-500/50 rounded-full hidden lg:block"
         animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
         transition={{ repeat: Infinity, duration: 6 }}
