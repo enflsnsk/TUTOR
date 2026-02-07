@@ -12,16 +12,27 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start gap-12">
         {/* Left Side: Brand & Description */}
         <div className="flex-1">
-          <div className="flex items-center space-x-2 mb-6">
-            <div className="w-8 h-8 bg-blue-500 rounded-lg transform rotate-45 flex items-center justify-center">
-              <span className="text-white font-bold transform -rotate-45">E</span>
+          <div className="flex items-center space-x-3 mb-6">
+            <div className="w-14 h-14 rounded-full border border-blue-500/30 overflow-hidden shadow-[0_0_20px_rgba(59,130,246,0.2)] bg-slate-800 flex items-center justify-center">
+              <img 
+                src="https://r.jina.ai/i/67be9e30a7d94f6f966113b246a47a74" 
+                alt="Instructor Kim Erin" 
+                className="w-full h-full object-cover object-top scale-125 translate-y-1"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  if (target.parentElement) {
+                    target.parentElement.innerHTML = '<div class="w-full h-full flex items-center justify-center bg-blue-600 font-bold text-white">E</div>';
+                  }
+                }}
+              />
             </div>
             <span className="font-bold text-2xl tracking-tight text-blue-400">
               Instructor 김애린
             </span>
           </div>
           <p className="text-slate-500 text-sm max-w-sm mb-8 leading-relaxed break-keep">
-            김애린 강사 Instructor Kim Aerin은 더 나은 미래를 위해 인공지능 기술의 진입장벽을 낮추고, 
+            김애린 강사는 더 나은 미래를 위해 인공지능 기술의 진입장벽을 낮추고, 
             모두가 AI를 도구 삼아 더 창의적인 삶을 살 수 있도록 돕습니다.
           </p>
           <div className="flex flex-wrap items-center gap-6">
