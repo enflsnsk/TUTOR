@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle, FileEdit, Calendar } from 'lucide-react';
+import { MessageCircle, FileEdit, Calendar, Mail, ExternalLink } from 'lucide-react';
 
 const Footer: React.FC = () => {
   // Fix: Use type-casted motion to bypass systemic type mismatches in the environment
@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
           </div>
           
           <div className="flex flex-col gap-4">
-            {/* Consulting Inquiry */}
+            {/* Instructor Blog (formerly Consulting Inquiry) */}
             <M.a 
               href="https://blog.naver.com/aeringo"
               target="_blank"
@@ -70,8 +70,8 @@ const Footer: React.FC = () => {
               whileTap={{ scale: 0.98 }}
               className="flex items-center justify-center space-x-3 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-2xl transition-all shadow-lg shadow-blue-500/20"
             >
-              <Calendar size={18} />
-              <span>컨설팅 문의하기</span>
+              <ExternalLink size={18} />
+              <span>강사 블로그</span>
             </M.a>
 
             {/* Course Registration */}
@@ -85,6 +85,17 @@ const Footer: React.FC = () => {
             >
               <FileEdit size={18} className="text-blue-400" />
               <span>강의 신청하기</span>
+            </M.a>
+
+            {/* Email Inquiry */}
+            <M.a 
+              href="mailto:aerinkim80@gmail.com"
+              whileHover={{ scale: 1.02, x: 5 }}
+              whileTap={{ scale: 0.98 }}
+              className="flex items-center justify-center space-x-3 bg-slate-800 hover:bg-slate-700 text-white font-bold px-8 py-4 rounded-2xl transition-all border border-white/10"
+            >
+              <Mail size={18} className="text-blue-400" />
+              <span>이메일 문의하기</span>
             </M.a>
 
             {/* KakaoTalk 1:1 Inquiry */}
